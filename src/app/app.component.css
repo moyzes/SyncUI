@@ -1,0 +1,29 @@
+
+md-list {
+	margin: 1em;
+}
+
+md-list-item {
+	border-bottom: 1px solid #E6E6E6;
+}
+
+md-list-item h3 {
+	font-weight: bold!important;
+	color: #666;
+	cursor: pointer;
+}
+
+md-list-item p {
+	font-size: 0.9em!important;
+	margin-top: 4px;
+	font-family: monospace;
+	font-weight: 100;
+	color: #999;
+}
+
+.add-channel {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	color: white;
+}

@@ -1,0 +1,36 @@
+
+<md-card *ngIf="channel">
+	<form (ngSubmit)="onSubmit()" #channelForm="ngForm">
+		<md-input-container>
+			<input md-input disabled value="{{channel.integration_name}}">
+		</md-input-container>
+
+		<md-input-container>
+			<input md-input  
+				name="integration_name" 
+				placeholder="Integration name"
+				[ngModel]="channel.integration_name">
+		</md-input-container>
+
+		<md-input-container>
+			<input md-input  
+				name="local_queue" 
+				placeholder="Queue name"
+				[ngModel]="channel.local_queue">
+		</md-input-container>
+
+		<md-input-container>
+			<input md-input  
+				class="xpath"
+				name="splitxpath_expression" 
+				placeholder="XPath root"
+				[ngModel]="channel.splitxpath_expression">
+		</md-input-container>
+	</form>
+
+	<md-card-actions>
+		<button md-raised-button color="primary" type="submit" (click)="runForm(channelForm)">Save</button>
+		<button md-raised-button color="primary" (click)="channelForm.reset()">Reset</button>
+		<button md-raised-button color="primary" (click)="channel = null">Cancel</button>
+	</md-card-actions>
+</md-card>

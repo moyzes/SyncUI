@@ -1,3 +1,39 @@
-<h1>
-  {{title}}
-</h1>
+<!-- Toolbar -->
+<md-toolbar layout="row" color="primary">
+	<span><md-icon>cached</md-icon></span>
+	<span>Cachesync</span>
+	<button md-icon-button [md-menu-trigger-for]="menu">
+		<md-icon>more_vert</md-icon>
+	</button>
+</md-toolbar>
+
+<!-- options menu -->
+<md-menu x-position="before" #menu="mdMenu">
+	<button md-menu-item>Option 1</button>
+	<button md-menu-item>Option 2</button>
+</md-menu>
+
+<!-- Navcontainer -->
+<md-sidenav-container>
+
+	<!-- Left bar -->
+	<md-sidenav align="start" mode="side" opened="true">
+
+		<!-- channel list -->
+		<md-list>
+			<md-list-item *ngFor="let channel of channels">
+				<h3 md-line (click)="onSelect(channel)">{{channel.integration_name | replaceUnderscore}}</h3>
+				<p md-line>{{channel.local_queue}}</p>
+			</md-list-item>
+		</md-list>
+	</md-sidenav>
+
+	<!-- Channel form -->
+	<channel-form [channel]="selectedChannel"></channel-form>
+
+</md-sidenav-container>
+
+<!-- Add new channel -->
+<button md-fab class="add-channel" (click)="onSelect(newChannel)">
+	<md-icon class="md-24">add</md-icon>
+</button>

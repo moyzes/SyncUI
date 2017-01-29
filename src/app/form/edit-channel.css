@@ -1,0 +1,11 @@
+md-input-container {
+	width: 100%;
+}
+
+md-card-actions {
+	text-align: center;
+}
+.xpath {
+	font-family: monospace;
+	font-size: 1em;
+}
