@@ -29,7 +29,7 @@
 	</md-sidenav>
 
 	<!-- Channel form -->
-	<channel-form [channel]="selectedChannel"></channel-form>
+	<channel-form [channel]="selectedChannel" (notify)="onNotify($event)"></channel-form>
 
 </md-sidenav-container>
 

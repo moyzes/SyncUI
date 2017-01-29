@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { ReplaceUnderscore } from './pipes/replace-underscore';
 import { EditChannel } from './form/edit-channel.component';
@@ -20,13 +20,21 @@ export class AppComponent {
 	errorMessage: any;
 
 	constructor(private channelService: ChannelService) {
-		this.channelService.getChannels().then(function(data){
-			this.channels = data;
-		}.bind(this));
+		this.listChannels();
 		this.newChannel = new Channel(0, '', '', '', '', '');
     }
 
+	listChannels(){
+		this.channelService.getChannels().then(function(data){
+			this.channels = data;
+		}.bind(this));
+	}
+
 	onSelect(channel: Channel): void {
 		this.selectedChannel = channel;
+	}
+
+	onNotify(message: string):void {
+		this.listChannels();
 	}
 }
