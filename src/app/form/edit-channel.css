@@ -2,10 +2,20 @@ md-input-container {
 	width: 100%;
 }
 
-md-card-actions {
+md-card-actions, md-dialog-actions {
 	text-align: center;
 }
+
 .xpath {
 	font-family: monospace;
 	font-size: 1em;
+}
+
+md-dialog-actions {
+	width: 100%;
+	justify-content: center;
+}
+
+md-dialog-actions button {
+	margin: 5px;
 }

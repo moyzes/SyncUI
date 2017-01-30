@@ -29,8 +29,8 @@
 	</form>
 
 	<md-card-actions>
-		<button md-raised-button color="primary" type="submit" (click)="runForm(channelForm)">Save</button>
+		<button md-raised-button color="primary" type="submit" (click)="saveChannel(channelForm)">Save</button>
 		<button md-raised-button color="primary" (click)="channelForm.reset()">Reset</button>
-		<button md-raised-button color="primary" (click)="channel = null">Cancel</button>
+		<button md-raised-button color="warn" (click)="deleteChannelWarning(channel.id)">Delete</button>
 	</md-card-actions>
 </md-card>

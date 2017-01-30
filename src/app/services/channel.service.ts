@@ -11,6 +11,7 @@ export class ChannelService {
     private options: RequestOptions;
     private channelList = 'http://localhost:3000/api/channels'
     private channelSave = 'http://localhost:3000/api/channel'
+    private channelDelete = 'http://localhost:3000/api/channel/'
 
     constructor(private http: Http) { 
         this.headers = new Headers(
@@ -21,20 +22,18 @@ export class ChannelService {
         );
         this.options = new RequestOptions({ headers: this.headers });
     }
-    
-    private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error);
-        return Promise.reject(error.message || error);
-    }
 
     getChannels(): Promise<Channel[]> {
-        return this.http.get(this.channelList).map((res) => {
+
+        let headers = new Headers({'Access-Control-Allow-Origin': '*'});
+        let options = new RequestOptions(headers);
+
+        return this.http.get(this.channelList, options).map((res) => {
 			return res.json()
 		}).toPromise();
     }
 
     saveChannel(param: any): Promise<any> {
-        
         let body = JSON.stringify(param);
         return this.http
             .post(this.channelSave, body, this.options)
@@ -43,8 +42,22 @@ export class ChannelService {
             .catch(this.handleError);
     }
 
+    deleteChannel(id: number): void {
+        console.log(id);
+        this.http
+            .delete(this.channelDelete + id)
+            .toPromise()
+            .then(this.extractData)
+            .catch(this.handleError);
+    }
+
     private extractData(res: Response) {
         let body = res.json();
         return body || {};
+    }
+
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error);
+        return Promise.reject(error.message || error);
     }
 }

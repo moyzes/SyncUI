@@ -3,16 +3,19 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
+import { MdDialogRef } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { EditChannel } from './form/edit-channel.component';
+import { ChannelService } from './services/channel.service';
+import { EditChannel, DeleteChannelDialog } from './form/edit-channel.component';
 import { ReplaceUnderscore } from './pipes/replace-underscore';
 
 @NgModule({
 	declarations: [
 		AppComponent, 
 		EditChannel,
-		ReplaceUnderscore
+		ReplaceUnderscore,
+		DeleteChannelDialog
 	],
 	imports: [
 		BrowserModule,
@@ -20,8 +23,8 @@ import { ReplaceUnderscore } from './pipes/replace-underscore';
 		HttpModule,
 		MaterialModule.forRoot()
 	],
-	providers: [],
-	entryComponents: [EditChannel],
+	providers: [ChannelService],
+	entryComponents: [DeleteChannelDialog],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 	bootstrap: [AppComponent]
 })
