@@ -7,7 +7,7 @@ import { MdDialogRef } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { ChannelService } from './services/channel.service';
-import { EditChannel, DeleteChannelDialog } from './form/edit-channel.component';
+import { EditChannel, DeleteChannelDialog, NewTagDialog, DeleteTagDialog } from './form/edit-channel.component';
 import { ReplaceUnderscore } from './pipes/replace-underscore';
 
 @NgModule({
@@ -15,7 +15,9 @@ import { ReplaceUnderscore } from './pipes/replace-underscore';
 		AppComponent, 
 		EditChannel,
 		ReplaceUnderscore,
-		DeleteChannelDialog
+		DeleteChannelDialog,
+		NewTagDialog,
+		DeleteTagDialog
 	],
 	imports: [
 		BrowserModule,
@@ -24,7 +26,7 @@ import { ReplaceUnderscore } from './pipes/replace-underscore';
 		MaterialModule.forRoot()
 	],
 	providers: [ChannelService],
-	entryComponents: [DeleteChannelDialog],
+	entryComponents: [DeleteChannelDialog, NewTagDialog, DeleteTagDialog],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
 	bootstrap: [AppComponent]
 })

@@ -9,8 +9,7 @@
 
 <!-- options menu -->
 <md-menu x-position="before" #menu="mdMenu">
-	<button md-menu-item>Option 1</button>
-	<button md-menu-item>Option 2</button>
+	<button md-menu-item>About</button>
 </md-menu>
 
 <!-- Navcontainer -->
@@ -22,8 +21,8 @@
 		<!-- channel list -->
 		<md-list>
 			<md-list-item *ngFor="let channel of channels">
-				<h3 md-line (click)="onSelect(channel)">{{channel.integration_name | replaceUnderscore}}</h3>
-				<p md-line>{{channel.local_queue}}</p>
+				<h3 md-line (click)="onSelect(channel)">{{channel.integrationName | replaceUnderscore}}</h3>
+				<p md-line>{{channel.localQueue}}</p>
 			</md-list-item>
 		</md-list>
 	</md-sidenav>

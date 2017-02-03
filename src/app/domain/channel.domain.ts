@@ -1,13 +1,17 @@
+import { DataTag } from "./tag.domain";
+
 export class Channel {
 
 	public id: number;
 	public documentName: string;
-	public integration_name: string;
-	public local_queue: string;
-	public splitxpath_expression: string;
-	public system_name: string;
+	public integrationName: string;
+	public localQueue: string;
+	public splitXPathExpression: string;
+	public systemName: string;
+	public dataTags: DataTag[] = [];
 	
 	constructor(
+		
 		id?: number,
 		documentName?: string,
 		integration?: string,
@@ -17,13 +21,18 @@ export class Channel {
 
 		this.id = id;
 		this.documentName = documentName;
-		this.integration_name = integration;
-		this.local_queue = queue;
-		this.splitxpath_expression = xpath;
-		this.system_name = system;
+		this.integrationName = integration;
+		this.localQueue = queue;
+		this.splitXPathExpression = xpath;
+		this.systemName = system;
+
 	}
 
 	hasDocument(){
 		return this.documentName != "";
+	}
+
+	addTag(tag: DataTag){
+		this.dataTags.push(tag);
 	}
 }

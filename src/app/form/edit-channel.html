@@ -1,36 +1,74 @@
 
-<md-card *ngIf="channel">
-	<form (ngSubmit)="onSubmit()" #channelForm="ngForm">
-		<md-input-container>
-			<input md-input disabled value="{{channel.integration_name}}">
-		</md-input-container>
+<div class="form-container">
 
-		<md-input-container>
-			<input md-input  
-				name="integration_name" 
-				placeholder="Integration name"
-				[ngModel]="channel.integration_name">
-		</md-input-container>
+	<form #channelForm="ngForm" id="channel-form">
+		<md-card *ngIf="channel">
+			<md-input-container>
+				<input md-input disabled value="{{channel.integrationName}}">
+			</md-input-container>
 
-		<md-input-container>
-			<input md-input  
-				name="local_queue" 
-				placeholder="Queue name"
-				[ngModel]="channel.local_queue">
-		</md-input-container>
+			<md-input-container>
+				<input md-input  
+					name="integrationName" 
+					placeholder="Integration name"
+					[(ngModel)]="channel.integrationName">
+			</md-input-container>
 
-		<md-input-container>
-			<input md-input  
-				class="xpath"
-				name="splitxpath_expression" 
-				placeholder="XPath root"
-				[ngModel]="channel.splitxpath_expression">
-		</md-input-container>
+			<md-input-container>
+				<input md-input  
+					name="localQueue" 
+					placeholder="Queue name"
+					[(ngModel)]="channel.localQueue">
+			</md-input-container>
+
+			<md-input-container>
+				<input md-input  
+					class="xpath"
+					name="splitXPathExpression" 
+					placeholder="XPath root"
+					[(ngModel)]="channel.splitXPathExpression">
+			</md-input-container>
+
+			<!-- Form buttons -->
+			<md-card-actions>
+				<button md-button color="warn" 
+					(click)="deleteChannelWarning()" 
+					mdTooltip="Delete channel">
+					<i class="material-icons">delete</i>
+				</button>
+				<button md-button color="primary" 
+					(click)="newTagDialog()"
+					mdTooltip="Add a new data tag">
+					<i class="material-icons">code</i>
+				</button>
+				<button md-button color="primary" 
+					(click)="saveChannel()"
+					mdTooltip="Save channel">
+					<i class="material-icons">save</i>
+				</button>
+			</md-card-actions>
+		</md-card>
+
+		<!-- Forms for data dats -->
+		<div *ngIf="channel && channel.dataTags">
+			<md-card *ngFor="let tag of channel.dataTags; let i = index">
+				<div class="delete-tag" (click)="deleteTagDialog(i)">
+					<i class="material-icons">clear</i>
+				</div>
+				<md-input-container>
+					<input md-input 
+						name="{{tag.id}}-tag.name"
+						placeholder="Tag name"
+						[(ngModel)]="channel.dataTags[i].name">
+				</md-input-container>
+				<md-input-container>
+					<input md-input 
+						class="xpath"
+						name="{{tag.id}}-tag.regex"
+						placeholder="Regex"
+						[(ngModel)]="channel.dataTags[i].regex">
+				</md-input-container>
+			</md-card>
+		</div>
 	</form>
-
-	<md-card-actions>
-		<button md-raised-button color="primary" type="submit" (click)="saveChannel(channelForm)">Save</button>
-		<button md-raised-button color="primary" (click)="channelForm.reset()">Reset</button>
-		<button md-raised-button color="warn" (click)="deleteChannelWarning(channel.id)">Delete</button>
-	</md-card-actions>
-</md-card>
+</div>

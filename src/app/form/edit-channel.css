@@ -1,3 +1,9 @@
+
+.form-container {
+	height: 90%;
+	overflow: auto;
+}
+
 md-input-container {
 	width: 100%;
 }
@@ -18,4 +24,20 @@ md-dialog-actions {
 
 md-dialog-actions button {
 	margin: 5px;
+}
+.new-tag h4 {
+	margin:0px 0px 20px 0px;
+	color: #666;
+}
+.delete-tag {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	font-size: 20px;
+	cursor: pointer;
+	color: #ccc;
+	z-index: 100;
+}
+.delete-tag:hover {
+	color: red;
 }

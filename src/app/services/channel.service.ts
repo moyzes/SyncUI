@@ -9,26 +9,19 @@ export class ChannelService {
 
     private headers: Headers;
     private options: RequestOptions;
-    private channelList = 'http://localhost:3000/api/channels'
-    private channelSave = 'http://localhost:3000/api/channel'
-    private channelDelete = 'http://localhost:3000/api/channel/'
+
+    private channelList = 'http://localhost:8090/channels'
+    private channelSave = 'http://localhost:8090/channel'
+    private channelDelete = 'http://localhost:8090/deleteChannel'
 
     constructor(private http: Http) { 
-        this.headers = new Headers(
-            {
-                'Content-Type': 'application/json', 
-                'Accept': 'q=0.8;application/json;q=0.9' 
-            }
-        );
-        this.options = new RequestOptions({ headers: this.headers });
+        this.headers = new Headers({'Content-Type': 'application/json', 'Accept': '*', 'Access-Control-Allow-Origin': '*'});
+        this.options = new RequestOptions({headers: this.headers});
     }
 
     getChannels(): Promise<Channel[]> {
-
-        let headers = new Headers({'Access-Control-Allow-Origin': '*'});
-        let options = new RequestOptions(headers);
-
-        return this.http.get(this.channelList, options).map((res) => {
+        let opt = new RequestOptions({headers: new Headers()});
+        return this.http.get(this.channelList, this.options).map((res) => {
 			return res.json()
 		}).toPromise();
     }
@@ -42,13 +35,10 @@ export class ChannelService {
             .catch(this.handleError);
     }
 
-    deleteChannel(id: number): void {
-        console.log(id);
-        this.http
-            .delete(this.channelDelete + id)
-            .toPromise()
-            .then(this.extractData)
-            .catch(this.handleError);
+    deleteChannel(id: string): Promise<any> {
+        return this.http
+            .post(this.channelDelete, id, this.options)
+            .toPromise().then();
     }
 
     private extractData(res: Response) {

@@ -14,14 +14,14 @@ import 'rxjs/add/operator/toPromise';
 })
 export class AppComponent {
 	
-	channels: any;
+	channels: Channel[];
 	selectedChannel: Channel;
 	newChannel: Channel;
 	errorMessage: any;
 
 	constructor(private channelService: ChannelService) {
 		this.listChannels();
-		this.newChannel = new Channel(0, '', '', '', '', '');
+		this.newChannel = new Channel();
     }
 
 	listChannels(){
@@ -34,7 +34,10 @@ export class AppComponent {
 		this.selectedChannel = channel;
 	}
 
-	onNotify(message: string):void {
+	onNotify(message: any):void {
 		this.listChannels();
+		if (message === "channel_deleted") {
+			this.selectedChannel = null;
+		}
 	}
 }

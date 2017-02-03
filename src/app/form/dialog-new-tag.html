@@ -1,0 +1,28 @@
+<div class="new-tag">
+	<md-dialog-content>
+		<h4>New data tag</h4>
+		<form #tagForm="ngForm">
+
+			<md-input-container>
+				<input md-input  
+					name="name" 
+					placeholder="Tag name"
+					[(ngModel)]="tag.name">
+			</md-input-container>
+
+			<md-input-container>
+				<input md-input  
+					name="regex" 
+					placeholder="Regex expression"
+					[(ngModel)]="tag.regex">
+			</md-input-container>
+
+		</form>
+	</md-dialog-content>
+
+	<md-dialog-actions>
+		<button md-raised-button md-dialog-close>Cancel</button>
+		<button md-raised-button (click)="addTag()">Add tag</button>
+	</md-dialog-actions>
+
+ </div>
