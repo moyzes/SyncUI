@@ -1,10 +1,14 @@
 
 md-list {
-	margin: 1em;
+	padding: 0 1em 0 1em;
 }
 
 md-list-item {
 	border-bottom: 1px solid #E6E6E6;
+}
+
+md-list-item:selected {
+	color:red;
 }
 
 md-list-item h3 {

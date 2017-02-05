@@ -16,7 +16,7 @@
 <md-sidenav-container>
 
 	<!-- Left bar -->
-	<md-sidenav align="start" mode="side" opened="true">
+	<md-sidenav align="start" mode="side" opened="true" style="padding-top: 10px">
 
 		<!-- channel list -->
 		<md-list>
@@ -33,6 +33,6 @@
 </md-sidenav-container>
 
 <!-- Add new channel -->
-<button md-fab class="add-channel" (click)="onSelect(newChannel)">
+<button md-fab class="add-channel" (click)="newChannel()">
 	<md-icon class="md-24">add</md-icon>
 </button>

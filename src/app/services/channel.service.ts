@@ -10,9 +10,9 @@ export class ChannelService {
     private headers: Headers;
     private options: RequestOptions;
 
-    private channelList = 'http://localhost:8090/channels'
-    private channelSave = 'http://localhost:8090/channel'
-    private channelDelete = 'http://localhost:8090/deleteChannel'
+    private channelList = './channels'
+    private channelSave = './channel'
+    private channelDelete = './deleteChannel'
 
     constructor(private http: Http) { 
         this.headers = new Headers({'Content-Type': 'application/json', 'Accept': '*', 'Access-Control-Allow-Origin': '*'});
@@ -28,6 +28,7 @@ export class ChannelService {
 
     saveChannel(param: any): Promise<any> {
         let body = JSON.stringify(param);
+        console.log(body);
         return this.http
             .post(this.channelSave, body, this.options)
             .toPromise()

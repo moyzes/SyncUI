@@ -16,12 +16,10 @@ export class AppComponent {
 	
 	channels: Channel[];
 	selectedChannel: Channel;
-	newChannel: Channel;
 	errorMessage: any;
 
 	constructor(private channelService: ChannelService) {
 		this.listChannels();
-		this.newChannel = new Channel();
     }
 
 	listChannels(){
@@ -32,6 +30,10 @@ export class AppComponent {
 
 	onSelect(channel: Channel): void {
 		this.selectedChannel = channel;
+	}
+
+	newChannel(): void {
+		this.onSelect(new Channel());
 	}
 
 	onNotify(message: any):void {
