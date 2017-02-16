@@ -1,20 +1,10 @@
 
-.form-container {
-	height: 90%;
-	overflow: auto;
-}
-
 md-input-container {
 	width: 100%;
 }
 
 md-card-actions, md-dialog-actions {
 	text-align: center;
-}
-
-.xpath {
-	font-family: monospace;
-	font-size: 1em;
 }
 
 md-dialog-actions {
@@ -25,10 +15,22 @@ md-dialog-actions {
 md-dialog-actions button {
 	margin: 5px;
 }
+
+.form-container {
+	height: 90%;
+	overflow: auto;
+}
+
+.xpath {
+	font-family: monospace;
+	font-size: 1em;
+}
+
 .new-tag h4 {
 	margin:0px 0px 20px 0px;
 	color: #666;
 }
+
 .delete-tag {
 	position: absolute;
 	top: 15px;
@@ -38,6 +40,7 @@ md-dialog-actions button {
 	color: #ccc;
 	z-index: 100;
 }
+
 .delete-tag:hover {
 	color: red;
 }

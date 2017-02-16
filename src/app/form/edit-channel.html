@@ -23,6 +23,13 @@
 
 			<md-input-container>
 				<input md-input  
+					name="documentName" 
+					placeholder="Document name"
+					[(ngModel)]="channel.documentName">
+			</md-input-container>
+
+			<md-input-container>
+				<input md-input  
 					class="xpath"
 					name="splitXPathExpression" 
 					placeholder="XPath root"
