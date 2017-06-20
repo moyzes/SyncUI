@@ -10,9 +10,9 @@ export class ChannelService {
     private headers: Headers;
     private options: RequestOptions;
 
-    private channelList = './channels'
-    private channelSave = './channel'
-    private channelDelete = './deleteChannel'
+    private channelList = 'http://segotl2011.got.volvo.net:8080/PdsCacheSync/channels'
+    private channelSave = 'http://segotl2011.got.volvo.net:8080/PdsCacheSync/channel'
+    private channelDelete = 'http://segotl2011.got.volvo.net:8080/PdsCacheSync/deleteChannel'
 
     constructor(private http: Http) { 
         this.headers = new Headers({'Content-Type': 'application/json', 'Accept': '*', 'Access-Control-Allow-Origin': '*'});
